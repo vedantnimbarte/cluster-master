@@ -1,5 +1,4 @@
 import cluster, { Worker } from 'cluster';
-import os from 'os';
 
 interface ClusterOptions {
   maxClusters: number;
@@ -43,6 +42,10 @@ class ClusterManager {
     if (worker) {
       worker.send(message);
     }
+  }
+
+  public listClusters() {
+    return Object.keys(cluster.workers).map(Number);
   }
 }
 
